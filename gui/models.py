@@ -85,9 +85,11 @@ class Channels(models.Model):
     local_base_fee = models.IntegerField()
     local_fee_rate = models.IntegerField()
     local_disabled = models.BooleanField()
+    local_cltv = models.IntegerField()
     remote_base_fee = models.IntegerField()
     remote_fee_rate = models.IntegerField()
     remote_disabled = models.BooleanField()
+    remote_cltv = models.IntegerField()
     is_active = models.BooleanField()
     is_open = models.BooleanField()
     last_update = models.DateTimeField()
@@ -150,6 +152,7 @@ class Rebalancer(models.Model):
     stop = models.DateTimeField(null=True, default=None)
     status = models.IntegerField(default=0)
     payment_hash = models.CharField(max_length=64, null=True, default=None)
+    manual = models.BooleanField(default=False)
     class Meta:
         app_label = 'gui'
 
